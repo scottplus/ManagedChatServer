@@ -3,7 +3,7 @@
 public class Room implements RoomAPI {
 	<Client>ArrayList clientList;							//clients currently in room
 	RoomManagerAPI manager; 								//RoomManager for API calls
-	String room;										//unique room name
+	String room;											//unique room name
 	
 	//construct the object
 	public Room(String room, RoomManagerAPI manager) {
@@ -65,13 +65,19 @@ public class Room implements RoomAPI {
 	public void changeUsername(String newUsername) {}
 	
 	//broadcast message object to all clients
-	public synchronized void broadcast(Message message) {}
+	public synchronized void broadcast(Message message) {
+		for(Client current : clientList) {
+			//write and flush
+			current.output.write(message);
+			current.output.flush();
+		}
+	}
 	
 	//broadcast message object to specific clientID
-	public synchronized void broadcast(Message message, int clientID) {
-		for(Room current : clientList) {
-			//send message
-		}
+	public synchronized void broadcast(Message message, Client client) {
+		//send to the specific client
+		client.output.write(message);
+		client.output.flush();
 	}
 	
 }

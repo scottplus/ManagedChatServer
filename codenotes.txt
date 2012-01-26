@@ -1,0 +1,5 @@
+//latest code notes
+
+//should we be using critical sections and initializing objects within the scope of each method only? specifically byte streams
+
+//or locking method objects with one 

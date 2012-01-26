@@ -33,6 +33,13 @@ public class ConnectionManager extends Thread implements ConnectionManagerAPI {
 	
 	public int getNumberOfClients() {}
 	
-	public boolean doesRoomExist();
+	public boolean doesRoomExist(String room) {
+		//loop through the room manager objects to check room names
+		for(RoomManager current : managers) {
+			if(current.doesRoomExistAtThisLevel(room)) {
+				return true;
+			}
+		}
+	}
 	
 }

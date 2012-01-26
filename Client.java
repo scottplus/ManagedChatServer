@@ -5,10 +5,6 @@ public class Client {
 	//socket
 	Socket connection;
 	
-	//Object IO streams
-	ObjectInputStream input;
-	ObjectOutputStream output;
-	
 	//username
 	String username;
 	
@@ -21,6 +17,10 @@ public class Client {
 
 	public void listen() {
 		//loop with blocking IO wait for messages
+		
+		//IOStreams
+		ObjectInputStream input;
+		ObjectOutputStream output;
 		
 		if(message.isApiCall) {
 			//API call

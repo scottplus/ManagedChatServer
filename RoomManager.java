@@ -9,8 +9,23 @@ public class RoomManager {
 		this.manager = manager;
 	}
 	
+//*** METHODS ACCESSABLE BY CONNECTION MANAGER
+	public doesRoomExistAtThisLevel(String room) {
+		//search this RoomManagers data
+		for(Room current : rooms) {
+			if(current.room.equals(room)) {
+				//room exists
+				return true;
+			}
+		}
+		//room doesn't exist
+		return false;
+	}
+	
+//*** API METHODS
+
 	public boolean addClientToRoom(String roomName, Client client, Room currentRoom) {
-		if(doesRoomExistAtCurrentLevel(room)) {
+		if(doesRoomExistAtThisLevel(room)) {
 			//room is in the current RoomManager object
 			
 			//notify users that user is leaving room
@@ -30,21 +45,21 @@ public class RoomManager {
 				}
 			}
 			
-		} else if(manager.addClientToRoom(roomName, client, currentRoom)) {
-			//the room is in another RoomManager object
-						
+			//room exists
+			return true;
 			
-		} else {
+		} else if(!manager.addClientToRoom(roomName, client, currentRoom)) {
 			//the room does not exist
+			currentRoom.broadcast(new Message("The room: "+roomName+" does not exist")client);
+			
+			//room doesn't exit
 			return false;
 		}
 	}
 	
-	private boolean doesRoomExistAtCurrentLevel(String room) {
-		//search ArrayList
-	}
 	
 	public boolean doesRoomExist(String room) {
-		
+		//forward to the connection manager
+		return manager.doesRoomExist(room);
 	}
 }
