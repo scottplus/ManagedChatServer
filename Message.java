@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 //message object, implements Serialization interface to allow the current state to be written to IO streams
-public class Message implements Serialization {
+public class Message implements Serializable {
 	//client who sent message
 	String username;
 	
@@ -25,5 +27,4 @@ public class Message implements Serialization {
 		this.message = message;
 		isApiCall = true;
 	}
-	
 }

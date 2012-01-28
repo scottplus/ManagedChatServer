@@ -1,16 +1,24 @@
-public class RoomManager {
+
+import java.util.ArrayList;
+
+public class RoomManager extends Thread {
 	//connection manager reference
 	ConnectionManagerAPI manager;
 	
 	//datastructure
-	<Room>ArrayList rooms;
+	ArrayList<Room> rooms;
 	
 	public RoomManager(ConnectionManagerAPI manager) {
 		this.manager = manager;
 	}
 	
+	//threading
+	public void run() {
+		//start the RoomManager
+	}
+	
 //*** METHODS ACCESSABLE BY CONNECTION MANAGER
-	public doesRoomExistAtThisLevel(String room) {
+	public boolean doesRoomExistAtThisLevel(String room) {
 		//search this RoomManagers data
 		for(Room current : rooms) {
 			if(current.room.equals(room)) {
@@ -22,7 +30,7 @@ public class RoomManager {
 		return false;
 	}
 	
-//*** API METHODS
+//*** API METHODS ACCESSABLE BY ROOM OBJECTS
 
 	public boolean addClientToRoom(String roomName, Client client, Room currentRoom) {
 		if(doesRoomExistAtThisLevel(room)) {
@@ -48,14 +56,8 @@ public class RoomManager {
 			//room exists
 			return true;
 			
-		} else if(!manager.addClientToRoom(roomName, client, currentRoom)) {
-			//the room does not exist
-			currentRoom.broadcast(new Message("The room: "+roomName+" does not exist")client);
-			
-			//room doesn't exit
-			return false;
 		}
-	}
+        }
 	
 	
 	public boolean doesRoomExist(String room) {

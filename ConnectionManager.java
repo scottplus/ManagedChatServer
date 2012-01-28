@@ -22,10 +22,11 @@ public class ConnectionManager extends Thread implements ConnectionManagerAPI {
 	
 	public boolean createNewRoom(String roomName) {}
 	
-	public boolean addClientToRoom(String roomName, Client client, Room currentRoom) {
-		
-		
+	public void addClientToDefaultLobby(Client client) {
+		managers.get(0).add;
 	}
+	
+	public boolean addClientToRoom(String roomName, Client client, Room currentRoom) {}
 	
 	public <String>ArrayList getListOfRooms() {}
 	

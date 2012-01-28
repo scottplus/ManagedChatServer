@@ -1,0 +1,3 @@
+public class RoomManagerLobby extends RoomManager implements Runnable {
+	
+}
