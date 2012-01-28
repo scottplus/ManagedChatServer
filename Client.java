@@ -1,4 +1,3 @@
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
@@ -30,13 +29,19 @@ public class Client {
        	//listen for blocking IO
 			
                 
-		if(message.isApiCall) {
+		/*if(message.isApiCall) {
 			//API call
 		} else {
 			//is a message non-auth message, broadcast to all clients
 			currentRoom.broadcast(message);
-		}
+		}*/
 	}
+        
+        public void write(Message message) {
+            //write
+            
+            //flush
+        }
 	
 	//set the current room
 	public void setCurrentRoom(RoomManagerAPI currentRoom) {

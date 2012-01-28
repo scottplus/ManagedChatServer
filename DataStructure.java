@@ -48,6 +48,7 @@ public class DataStructure <E> implements List<E> {
                 //remove the next node from the list
                 current.setNext(current.getNext().getNext());
                 
+                //decrement size
                 size--;
                 
                 //obj removed and node dereferenced
@@ -60,6 +61,10 @@ public class DataStructure <E> implements List<E> {
         
         //the index has not been found
         return obj; //*** null pointer, handle for safety on calling code
+    }
+    
+    public E get(int index) {
+        
     }
     
     //synchronize object E index reference with this method BEFORE adding
@@ -82,27 +87,31 @@ public class DataStructure <E> implements List<E> {
         Node next;
         
         //create a Node with no data/index (used for head nodes)
-        private Node() {}
+        Node() {}
         
         //private methods to abstract to DataStructure only
-        private Node(E obj, int index) {
+        Node(E obj, int index) {
             this.obj = obj;
             this.index = index;
         }
         
-        private void setNext(Node next) {
+        //set the next node in the list
+        void setNext(Node next) {
             this.next = next;
         }
         
-        private Node getNext() {
+        //return a reference to the next node
+        Node getNext() {
             return next;
         } 
         
-        private int getIndex() {
+        //return the current node index
+        int getIndex() {
             return index;
         }
         
-        private E getObj() {
+        //return the current node's data
+        E getObj() {
             return obj;
         }
     }
