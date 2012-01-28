@@ -7,6 +7,8 @@ public class DataStructure <E> implements List<E> {
     
     //default constructor
     public DataStructure() {
+        //head = blank node
+        head = new Node();
         size = 0;
     }
     
@@ -18,9 +20,7 @@ public class DataStructure <E> implements List<E> {
         //increment the size of the datastructure
         size++;
         
-        //add the new object to the start of the structure
-        
-        //create a new node
+        //create a new node, add to head
         Node temp = new Node(obj, index);
         
         //add to the top of the list
@@ -62,10 +62,17 @@ public class DataStructure <E> implements List<E> {
         return obj; //*** null pointer, handle for safety on calling code
     }
     
+    //synchronize object E index reference with this method BEFORE adding
+    public int getCurrentIndex() {
+        return size;
+    }
+    
+    //returns the size of the data structure
     public int size() {
         return size;
     }
     
+    //Node modules
     public class Node <E> {
         //object and index in the data structure
         E obj;
@@ -73,6 +80,9 @@ public class DataStructure <E> implements List<E> {
         
         //reference to the next Node, null if last
         Node next;
+        
+        //create a Node with no data/index (used for head nodes)
+        private Node() {}
         
         //private methods to abstract to DataStructure only
         private Node(E obj, int index) {
